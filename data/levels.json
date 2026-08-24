@@ -1,0 +1,128 @@
+{
+  "N5": {
+    "pass": 80,
+    "next": "N4",
+    "sections": {
+      "LK": {
+        "name": "言語知識・讀解",
+        "max": 120,
+        "min": 38,
+        "lowMax": 59,
+        "midMax": 89
+      },
+      "C": {
+        "name": "聽解",
+        "max": 60,
+        "min": 19,
+        "lowMax": 29,
+        "midMax": 44
+      }
+    },
+    "totalMax": 180
+  },
+  "N4": {
+    "pass": 90,
+    "next": "N3",
+    "sections": {
+      "LK": {
+        "name": "言語知識・讀解",
+        "max": 120,
+        "min": 38,
+        "lowMax": 59,
+        "midMax": 89
+      },
+      "C": {
+        "name": "聽解",
+        "max": 60,
+        "min": 19,
+        "lowMax": 29,
+        "midMax": 44
+      }
+    },
+    "totalMax": 180
+  },
+  "N3": {
+    "pass": 95,
+    "next": "N2",
+    "sections": {
+      "LK": {
+        "name": "言語知識",
+        "max": 60,
+        "min": 19,
+        "lowMax": 29,
+        "midMax": 44
+      },
+      "R": {
+        "name": "讀解",
+        "max": 60,
+        "min": 19,
+        "lowMax": 29,
+        "midMax": 44
+      },
+      "C": {
+        "name": "聽解",
+        "max": 60,
+        "min": 19,
+        "lowMax": 29,
+        "midMax": 44
+      }
+    },
+    "totalMax": 180
+  },
+  "N2": {
+    "pass": 90,
+    "next": "N1",
+    "sections": {
+      "LK": {
+        "name": "言語知識",
+        "max": 60,
+        "min": 19,
+        "lowMax": 29,
+        "midMax": 44
+      },
+      "R": {
+        "name": "讀解",
+        "max": 60,
+        "min": 19,
+        "lowMax": 29,
+        "midMax": 44
+      },
+      "C": {
+        "name": "聽解",
+        "max": 60,
+        "min": 19,
+        "lowMax": 29,
+        "midMax": 44
+      }
+    },
+    "totalMax": 180
+  },
+  "N1": {
+    "pass": 100,
+    "next": null,
+    "sections": {
+      "LK": {
+        "name": "言語知識",
+        "max": 60,
+        "min": 19,
+        "lowMax": 29,
+        "midMax": 44
+      },
+      "R": {
+        "name": "讀解",
+        "max": 60,
+        "min": 19,
+        "lowMax": 29,
+        "midMax": 44
+      },
+      "C": {
+        "name": "聽解",
+        "max": 60,
+        "min": 19,
+        "lowMax": 29,
+        "midMax": 44
+      }
+    },
+    "totalMax": 180
+  }
+}

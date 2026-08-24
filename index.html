@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>日檢弱點分析</title>
+<meta name="description" content="輸入 JLPT 正式成績，自動產生老師口吻的弱點分析評語。">
+<link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>日檢弱點分析</h1>
+    <p class="sub">輸入 JLPT 正式成績，自動產生弱點分析與建議。</p>
+  </header>
+  <main id="app">
+    <div class="card"><p class="detail">載入中…</p></div>
+  </main>
+</div>
+<script type="module">
+  import { loadData } from "./src/data.js";
+  import { bootstrap } from "./src/app.js";
+  const app = document.getElementById("app");
+  try {
+    const { levels, comments } = await loadData();
+    bootstrap(levels, comments);
+  } catch (err) {
+    app.innerHTML = "";
+    const box = document.createElement("div");
+    box.className = "card";
+    box.innerHTML = '<h2>載入失敗</h2><p class="detail"></p>'
+      + '<p class="hint">如果你是用 file:// 直接開啟這個檔案，瀏覽器會擋掉資料載入。'
+      + '請改用 <code>npm start</code> 開本機伺服器，或改開 <code>dist/index.html</code>（已內嵌資料的單檔版）。</p>';
+    box.querySelector(".detail").textContent = String(err && err.message || err);
+    app.append(box);
+  }
+</script>
+</body>
+</html>

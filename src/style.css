@@ -1,0 +1,175 @@
+:root {
+  --bg: #f6f7f9;
+  --card: #ffffff;
+  --ink: #1c2024;
+  --muted: #5f6b76;
+  --line: #dfe3e8;
+  --accent: #2b6cb0;
+  --accent-soft: #e8f0fa;
+  --ok: #1f7a4d;
+  --ok-soft: #e4f4ec;
+  --warn: #9a5b00;
+  --warn-soft: #fdf1de;
+  --bad: #b42318;
+  --bad-soft: #fdeceb;
+  --radius: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a;
+    --card: #1d2125;
+    --ink: #e8eaed;
+    --muted: #9aa4ae;
+    --line: #313840;
+    --accent: #6aa9e9;
+    --accent-soft: #1b2b3d;
+    --ok: #6cc79a;
+    --ok-soft: #162b21;
+    --warn: #e0a353;
+    --warn-soft: #2e2415;
+    --bad: #f08b82;
+    --bad-soft: #331b19;
+  }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  padding: 0 0 3rem;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: system-ui, "Microsoft JhengHei", "PingFang TC", sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 1rem; }
+
+header { padding: 1.25rem 0 0.5rem; }
+h1 { font-size: 1.25rem; margin: 0 0 0.15rem; }
+.sub { color: var(--muted); font-size: 0.85rem; margin: 0; }
+
+/* 分頁 */
+.tabs { display: flex; gap: 0.4rem; margin: 1rem 0; flex-wrap: wrap; }
+.tabs button {
+  flex: 1 1 auto; min-width: 6.5rem; padding: 0.55rem 0.6rem;
+  font: inherit; font-size: 0.92rem; color: var(--muted);
+  background: transparent; border: 1px solid var(--line);
+  border-radius: var(--radius); cursor: pointer;
+}
+.tabs button[aria-selected="true"] {
+  background: var(--accent-soft); border-color: var(--accent);
+  color: var(--accent); font-weight: 600;
+}
+
+.card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 1rem; margin-bottom: 1rem;
+}
+.card h2 { font-size: 1rem; margin: 0 0 0.75rem; }
+
+/* 表單 */
+.field { margin-bottom: 0.9rem; }
+.field > label, .field > .lab {
+  display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 0.3rem;
+}
+input[type="number"], select, textarea {
+  width: 100%; padding: 0.6rem 0.7rem; font: inherit;
+  color: var(--ink); background: var(--card);
+  border: 1px solid var(--line); border-radius: 8px;
+}
+input[type="number"]:focus, select:focus, textarea:focus {
+  outline: 2px solid var(--accent); outline-offset: -1px; border-color: var(--accent);
+}
+input.bad { border-color: var(--bad); }
+textarea { min-height: 8rem; resize: vertical; font-size: 0.9rem; line-height: 1.5; }
+.hint { font-size: 0.78rem; color: var(--muted); margin: 0.3rem 0 0; }
+
+/* A/B/C 選擇 */
+.seg { display: flex; gap: 0.4rem; }
+.seg button {
+  flex: 1; padding: 0.55rem 0; font: inherit; font-weight: 600;
+  color: var(--muted); background: var(--card);
+  border: 1px solid var(--line); border-radius: 8px; cursor: pointer;
+}
+.seg button[aria-pressed="true"] {
+  background: var(--accent); border-color: var(--accent); color: #fff;
+}
+
+button.action {
+  padding: 0.6rem 1rem; font: inherit; font-weight: 600; cursor: pointer;
+  color: #fff; background: var(--accent);
+  border: 1px solid var(--accent); border-radius: 8px;
+}
+button.ghost { color: var(--accent); background: transparent; }
+button.action:disabled { opacity: 0.5; cursor: not-allowed; }
+.row { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
+
+/* 結果 */
+.verdict { display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+.total { font-size: 2rem; font-weight: 700; line-height: 1.1; }
+.total small { font-size: 0.85rem; font-weight: 400; color: var(--muted); }
+.badge {
+  padding: 0.15rem 0.6rem; border-radius: 999px;
+  font-size: 0.85rem; font-weight: 600; white-space: nowrap;
+}
+.badge.pass { background: var(--ok-soft); color: var(--ok); }
+.badge.fail { background: var(--bad-soft); color: var(--bad); }
+.badge.partial { background: var(--warn-soft); color: var(--warn); }
+.detail { color: var(--muted); font-size: 0.88rem; margin: 0 0 0.75rem; }
+.detail strong { color: var(--ink); }
+
+.comment {
+  background: var(--bg); border: 1px solid var(--line);
+  border-radius: 8px; padding: 0.85rem; margin-bottom: 0.75rem;
+  white-space: pre-wrap; word-break: break-word;
+}
+
+.errors { background: var(--bad-soft); border: 1px solid var(--bad); border-radius: 8px; padding: 0.7rem 0.9rem; }
+.errors ul { margin: 0; padding-left: 1.2rem; }
+.errors li { color: var(--bad); font-size: 0.9rem; }
+
+details.debug { margin-top: 0.25rem; }
+details.debug summary { cursor: pointer; color: var(--muted); font-size: 0.85rem; }
+details.debug dl { display: grid; grid-template-columns: auto 1fr; gap: 0.15rem 0.75rem; margin: 0.6rem 0 0; font-size: 0.83rem; }
+details.debug dt { color: var(--muted); }
+details.debug dd { margin: 0; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; word-break: break-all; }
+
+/* 表格 */
+.scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+table { border-collapse: collapse; width: 100%; font-size: 0.85rem; }
+th, td { border-bottom: 1px solid var(--line); padding: 0.5rem 0.55rem; text-align: left; vertical-align: top; }
+th { color: var(--muted); font-weight: 600; white-space: nowrap; }
+tr.err td { background: var(--bad-soft); color: var(--bad); }
+td.cmt { min-width: 20rem; white-space: pre-wrap; }
+.nowrap { white-space: nowrap; }
+
+.stats { display: grid; gap: 0.5rem; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); }
+.stat { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 0.6rem 0.7rem; }
+.stat b { display: block; font-size: 1.3rem; line-height: 1.3; }
+.stat span { font-size: 0.78rem; color: var(--muted); }
+
+.banner {
+  background: var(--warn-soft); border: 1px solid var(--warn); color: var(--warn);
+  border-radius: 8px; padding: 0.6rem 0.8rem; margin-bottom: 1rem; font-size: 0.88rem;
+}
+.banner .row { margin-top: 0.5rem; }
+
+.ed-group { border-top: 1px solid var(--line); padding-top: 0.75rem; margin-top: 0.75rem; }
+.ed-key { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.78rem; color: var(--muted); }
+.ed-item { margin-bottom: 0.9rem; }
+.ed-item textarea { min-height: 5.5rem; }
+.edited { color: var(--warn); font-weight: 600; font-size: 0.78rem; }
+
+.toast {
+  position: fixed; left: 50%; bottom: 1.25rem; transform: translateX(-50%);
+  background: var(--ink); color: var(--bg); padding: 0.5rem 1rem;
+  border-radius: 999px; font-size: 0.88rem; opacity: 0; pointer-events: none;
+  transition: opacity 0.2s;
+}
+.toast.on { opacity: 1; }
+
+@media (max-width: 420px) {
+  .total { font-size: 1.6rem; }
+  .tabs button { min-width: 0; font-size: 0.85rem; }
+}
